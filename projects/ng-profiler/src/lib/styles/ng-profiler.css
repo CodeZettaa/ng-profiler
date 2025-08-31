@@ -1,0 +1,104 @@
+/* NgProfiler Heatmap Styles */
+
+/* Heatmap outlines for components with high render counts */
+[data-ng-profiler="low"] {
+  outline: 2px solid #4caf50 !important;
+  outline-offset: 2px !important;
+  position: relative;
+}
+
+[data-ng-profiler="low"]::before {
+  content: "🟢 Low";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #4caf50;
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 10000;
+  font-family: monospace;
+}
+
+[data-ng-profiler="medium"] {
+  outline: 2px solid #ff9800 !important;
+  outline-offset: 2px !important;
+  position: relative;
+}
+
+[data-ng-profiler="medium"]::before {
+  content: "🟡 Medium";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #ff9800;
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 10000;
+  font-family: monospace;
+}
+
+[data-ng-profiler="high"] {
+  outline: 2px solid #f44336 !important;
+  outline-offset: 2px !important;
+  position: relative;
+}
+
+[data-ng-profiler="high"]::before {
+  content: "🔴 High";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  background: #f44336;
+  color: white;
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  z-index: 10000;
+  font-family: monospace;
+}
+
+/* Animation for heatmap outlines */
+@keyframes ng-profiler-pulse {
+  0% {
+    outline-color: rgba(244, 67, 54, 0.8);
+  }
+  50% {
+    outline-color: rgba(244, 67, 54, 1);
+  }
+  100% {
+    outline-color: rgba(244, 67, 54, 0.8);
+  }
+}
+
+[data-ng-profiler="high"] {
+  animation: ng-profiler-pulse 2s ease-in-out infinite;
+}
+
+/* Ensure outlines are visible even with existing styles */
+[data-ng-profiler] {
+  outline-style: solid !important;
+  outline-width: 2px !important;
+  outline-offset: 2px !important;
+}
+
+/* Hide heatmap in production unless explicitly enabled */
+@media (prefers-reduced-motion: reduce) {
+  [data-ng-profiler] {
+    animation: none !important;
+  }
+}
+
+/* Print styles - hide heatmap */
+@media print {
+  [data-ng-profiler] {
+    outline: none !important;
+  }
+  
+  [data-ng-profiler]::before {
+    display: none !important;
+  }
+}
