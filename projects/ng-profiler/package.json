@@ -1,13 +1,14 @@
 {
   "name": "@code-zetta/ng-profiler",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A tiny in-app profiler overlay for Angular that works in both zoned and zoneless applications",
   "peerDependencies": {
     "@angular/common": "^20.2.0",
     "@angular/core": "^20.2.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "jspdf": "^2.5.1"
   },
   "sideEffects": false
 }
