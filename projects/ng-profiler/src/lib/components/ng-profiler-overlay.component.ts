@@ -1078,7 +1078,7 @@ export class NgProfilerOverlayComponent implements OnInit, OnDestroy {
       pdf.save(filename);
     } catch (error) {
       console.error('NgProfiler: PDF export failed:', error);
-      alert('PDF export failed. Please install jspdf and html2canvas packages in your project.');
+      alert('PDF export failed. Please check the browser console for details.');
     } finally {
       // Always resume profiling, even if export failed
       this.profilerService.resumeProfiling();
