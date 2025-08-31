@@ -618,7 +618,14 @@ export class NgProfilerOverlayComponent implements OnInit, OnDestroy {
       }
 
       // Dynamically import jsPDF only (no html2canvas to avoid DOM manipulation)
-      const jsPDF = await import('jspdf').then((m) => m.default);
+      let jsPDF: any;
+      try {
+        jsPDF = await import('jspdf').then((m) => m.default);
+      } catch (importError) {
+        console.error('NgProfiler: jspdf not available:', importError);
+        alert('PDF export requires jspdf package. Please install it with: npm install jspdf');
+        return;
+      }
 
       // Create PDF directly from data (no DOM manipulation)
       const pdf = new jsPDF('p', 'mm', 'a4');
